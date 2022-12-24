@@ -18,8 +18,8 @@ public class X509UtilTest {
 				"海南",
 				"email@example.com",
 				"https://www.example.com/license");
-		// 生成CRLs序列号数组
-		BigInteger[] CRLs = new BigInteger[] { BigInteger.valueOf(2), BigInteger.valueOf(3) };
+		// 生成CRL序列号数组
+		BigInteger[] CRL = new BigInteger[] { BigInteger.valueOf(2), BigInteger.valueOf(3) };
 
 		// 生成CA root证书
 		X509Certificate rootCert = X509Util.generateRootCert(3);
@@ -28,8 +28,8 @@ public class X509UtilTest {
 		X509Util.saveEncodedFile("root.pem", X509Util.X509CertificateToPem(rootCert).getBytes(StandardCharsets.UTF_8));
 		//生成用户证书
 		X509Util.saveEncodedFile("user.cer", X509Util.generateUserCert(3, subjectDN, genPublic).getEncoded());
-		//生成CRLs证书
-		X509Util.saveEncodedFile("test.crl", X509Util.generateCRLsCert(X509Util.readPrivateKey("root.privateKey","RSA"), CRLs).getEncoded());
+		//生成CRL证书
+		X509Util.saveEncodedFile("test.crl", X509Util.generateCRLCert(X509Util.readPrivateKey("root.privateKey","RSA"), CRL).getEncoded());
 
 		// 校验root证书
 		String certPath = "root.cer";

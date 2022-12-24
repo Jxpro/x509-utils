@@ -397,7 +397,7 @@ public class X509Util {
 	 * @param serials      吊销的证书序列号
 	 * @return X509CRL证书吊销列表
 	 */
-	public static X509CRL generateCRLsCert(PrivateKey caPrivateKey, BigInteger[] serials) throws Exception {
+	public static X509CRL generateCRLCert(PrivateKey caPrivateKey, BigInteger[] serials) throws Exception {
 		// 证书吊销列表构造器
 		JcaX509v2CRLBuilder crlGen = new JcaX509v2CRLBuilder(new X500Principal(ROOT_DN), new Date());
 		// 设置下次更新时间
